@@ -8,13 +8,8 @@ export const PATHS = {
 
 const Routes = () => (
   <Router>
-    <ScreenRoute key="home" screen="home" title="App" path={PATHS.HOME} />
-    <ScreenRoute
-      key="no-match"
-      screen="no-match"
-      title="App - No match"
-      default
-    />
+    <ScreenRoute key="home" screen="home" path={PATHS.HOME} />
+    <ScreenRoute key="no-match" screen="no-match" default />
   </Router>
 )
 
