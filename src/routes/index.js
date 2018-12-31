@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Router } from '@reach/router'
-import ScreenRoute from 'utils/ScreenRoute'
+import LazyLoadScreen from 'utils/LazyLoadScreen'
+import Loader from 'components/loader'
 
 export const PATHS = {
-  HOME: '/'
+  HOME: '/',
+  NO_MATCH: '*'
 }
 
+const screens = preval`
+  const fs = require('fs')
+  const path = require('path')
+  module.exports = fs.readdirSync(path.resolve(__dirname, '../screens'))
+`
+
 const Routes = () => (
-  <Router>
-    <ScreenRoute key="home" screen="home" path={PATHS.HOME} />
-    <ScreenRoute key="no-match" screen="no-match" default />
-  </Router>
+  <Suspense fallback={<Loader />}>
+    <Router>
+      {screens.map(screen => {
+        const Screen = LazyLoadScreen(screen)
+        const path = PATHS[screen.replace(/-/, '_').toUpperCase()]
+
+        if (!path) return null
+        return <Screen key={screen} path={path} default={path === '*'} />
+      })}
+    </Router>
+  </Suspense>
 )
 
 export default Routes

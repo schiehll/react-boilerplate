@@ -5,7 +5,7 @@
 - Babel 7
 - Webpack 4
 - Reach Router
-- Code Splitting
+- Code Splitting with Suspense and lazy
 - Prettier
 - Eslint
 - Styled Components
