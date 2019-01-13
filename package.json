@@ -6,9 +6,9 @@
   "author": "Reinaldo Schiehll <rn.schiehll@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf public/** && webpack --mode production --config webpack/webpack.config.js",
-    "analyze": "webpack --mode production --config webpack/webpack.analyze.js",
-    "dev": "rm -rf public/** && webpack-dev-server --hot --config webpack/webpack.dev.js",
+    "build": "rm -rf public/** && node -r @babel/register node_modules/.bin/webpack --mode production --config client/webpack/webpack.config.js",
+    "analyze": "node -r @babel/register node_modules/.bin/webpack --mode production --config client/webpack/webpack.analyze.js",
+    "dev": "rm -rf public/** && node -r @babel/register node_modules/.bin/webpack-dev-server --hot --config client/webpack/webpack.dev.js",
     "start": "serve --single ./public",
     "lint": "lint-staged",
     "precommit": "lint-staged"
