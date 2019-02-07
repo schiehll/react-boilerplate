@@ -5,7 +5,6 @@ import Loader from 'components/loader'
 
 export const PATHS = {
   HOME: '/',
-  DETAILS: '/details',
   NO_MATCH: '*'
 }
 
