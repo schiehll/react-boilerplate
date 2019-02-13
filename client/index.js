@@ -1,9 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { unstable_createRoot as createRoot } from 'react-dom'
 import App from './App'
 
+const root = createRoot(document.getElementById('root'))
+
 const render = Component => {
-  ReactDOM.render(<App />, document.getElementById('root'))
+  root.render(<Component />)
 }
 
 render(App)

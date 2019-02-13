@@ -1,15 +1,10 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Link } from '@reach/router'
-import { PATHS, screenRoutes } from 'routes'
-
-const homeScreen = screenRoutes.find(
-  screenRoute => screenRoute.path === PATHS.HOME
-)
+import useScreenPreload from 'hooks/useScreenPreload'
+import { PATHS } from 'routes'
 
 const NoMatch = () => {
-  useEffect(() => {
-    if (homeScreen) homeScreen.component.preload()
-  }, [])
+  useScreenPreload(PATHS.HOME)
 
   return (
     <Fragment>
